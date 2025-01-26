@@ -17,6 +17,7 @@ const apartmentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchApartments.pending, (state) => {
+        state.error = null;
         state.status = "loading";
       })
       .addCase(fetchApartments.fulfilled, (state, action) => {
@@ -27,8 +28,21 @@ const apartmentsSlice = createSlice({
         state.status = "failed";
         state.error = action.payload;
       })
+      .addCase(addApartment.pending, (state) => {
+        state.error = null;
+        state.status = "loading";
+      })
       .addCase(addApartment.fulfilled, (state, action) => {
+        state.status = "succeeded";
         state.apartments.push(action.payload);
+      })
+      .addCase(addApartment.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(updateApartment.pending, (state) => {
+        state.error = null;
+        state.status = "loading";
       })
       .addCase(updateApartment.fulfilled, (state, action) => {
         const index = state.apartments.findIndex(
@@ -37,11 +51,25 @@ const apartmentsSlice = createSlice({
         if (index !== -1) {
           state.apartments[index] = action.payload;
         }
+        state.status = "succeeded";
+      })
+      .addCase(updateApartment.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(deleteApartment.pending, (state) => {
+        state.error = null;
+        state.status = "loading";
       })
       .addCase(deleteApartment.fulfilled, (state, action) => {
         state.apartments = state.apartments.filter(
           (apt) => apt.id !== action.payload
         );
+        state.status = "succeeded";
+      })
+      .addCase(deleteApartment.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });

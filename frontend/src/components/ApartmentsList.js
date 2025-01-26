@@ -15,14 +15,14 @@ const ApartmentsList = () => {
   const error = useSelector((state) => state.apartments.error);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchApartments());
-    }
-  }, [status, dispatch]);
+    dispatch(fetchApartments());
+  }, [dispatch]);
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this apartment?")) {
-      dispatch(deleteApartment(id));
+      dispatch(deleteApartment(id)).then(() => {
+        dispatch(fetchApartments());
+      });
     }
   };
 
@@ -34,17 +34,17 @@ const ApartmentsList = () => {
     content = (
       <ul className="apartments-list">
         {apartments.map((apartment) => (
-          <li key={apartment.id} className="apartment-item">
+          <li key={apartment._id} className="apartment-item">
             <h3>{apartment.title}</h3>
             <p>{apartment.description}</p>
             <p>Price: ${apartment.price}</p>
             <p>Rooms: {apartment.rooms}</p>
             <div className="actions">
-              <Link to={`/edit/${apartment.id}`} className="edit-button">
+              <Link to={`/edit/${apartment._id}`} className="edit-button">
                 Edit
               </Link>
               <button
-                onClick={() => handleDelete(apartment.id)}
+                onClick={() => handleDelete(apartment._id)}
                 className="delete-button"
               >
                 Delete
@@ -55,7 +55,7 @@ const ApartmentsList = () => {
       </ul>
     );
   } else if (status === "failed") {
-    content = <p>Error: {error}</p>;
+    content = <p>Error: {error?.message || "Something went wrong"}</p>;
   }
 
   return (
