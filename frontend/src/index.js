@@ -1,21 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { store, persistor } from "./redux/store.js";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App";
+import { PersistGate } from "redux-persist/integration/react";
 
-// Redux store
-const store = configureStore({
-  reducer: {},
-});
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-ReactDOM.render(
+root.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById("root")
+    <PersistGate persistor={persistor}>
+      <Router basename="/flat_for_rent">
+        <App />
+      </Router>
+    </PersistGate>
+  </Provider>
 );

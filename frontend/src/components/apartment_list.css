@@ -1,0 +1,86 @@
+.apartments-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.apartment-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.apartment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.apartment-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #333;
+}
+
+.apartment-card p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.apartment-card .price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.apartment-card .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.apartment-card button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.apartment-card button.edit {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.apartment-card button.edit:hover {
+  background-color: #0056b3;
+}
+
+.apartment-card button.delete {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.apartment-card button.delete:hover {
+  background-color: #a71d2a;
+}
+
+.loading {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
+.error {
+  font-size: 16px;
+  color: #dc3545;
+  text-align: center;
+}
