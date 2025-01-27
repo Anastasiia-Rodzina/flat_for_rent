@@ -6,14 +6,13 @@ import "./apartment_form.css";
 import { addApartment, updateApartment } from "../redux/apartmentOperations.js";
 
 const ApartmentForm = () => {
-  const { id } = useParams(); // Get the ID from the URL for editing an apartment
+  const { id } = useParams();
   const apartmentToEdit = useSelector((state) =>
     selectApartmentById(state, id)
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Initialize form state with default values or values from the apartment being edited
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -32,7 +31,6 @@ const ApartmentForm = () => {
     }
   }, [id, apartmentToEdit]);
 
-  // Handle input changes for form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -41,20 +39,19 @@ const ApartmentForm = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (id) {
-      dispatch(updateApartment({ id, ...formData })); // Dispatch update action
+      dispatch(updateApartment({ id, ...formData }));
     } else {
-      dispatch(addApartment(formData)); // Dispatch add action
+      dispatch(addApartment(formData));
     }
-    navigate("/"); // Redirect to the apartments list
+    navigate("/");
   };
 
   return (
     <div className="form-container">
-      <h2 className="form-title">{id ? "Edit Apartment" : "Add Apartment"}</h2>
+      <h3 className="form-title">{id ? "Edit Apartment" : "Add Apartment"}</h3>
       <form onSubmit={handleSubmit} className="apartment-form">
         <label htmlFor="title" className="form-label">
           Title:
@@ -83,7 +80,6 @@ const ApartmentForm = () => {
           className="form-textarea"
         ></textarea>
 
-        {/* Price Input */}
         <label htmlFor="price" className="form-label">
           Price:
         </label>
@@ -98,7 +94,6 @@ const ApartmentForm = () => {
           className="form-input"
         />
 
-        {/* Rooms Input */}
         <label htmlFor="rooms" className="form-label">
           Number of Rooms:
         </label>
@@ -110,12 +105,17 @@ const ApartmentForm = () => {
           required
           className="form-select"
         >
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
+          <option className="form-option" value={1}>
+            1
+          </option>
+          <option className="form-option" value={2}>
+            2
+          </option>
+          <option className="form-option" value={3}>
+            3
+          </option>
         </select>
 
-        {/* Submit Button */}
         <button type="submit" className="form-button">
           {id ? "Update Apartment" : "Add Apartment"}
         </button>

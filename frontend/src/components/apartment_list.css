@@ -1,22 +1,32 @@
-.apartments-list-container {
+.apartments-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-width: 360px;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.apartments-list-container {
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 16px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .apartment-card {
   display: flex;
   flex-direction: column;
+  width: 200px;
   justify-content: space-between;
   padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .apartment-card:hover {
@@ -27,12 +37,37 @@
 .apartment-card h3 {
   margin: 0 0 8px;
   font-size: 20px;
-  color: #333;
+  color: white;
 }
 
 .apartment-card p {
   margin: 4px 0;
+  color: bisque;
+}
+.apartment-description {
+  font-size: 14px;
   color: #555;
+  height: 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+  padding-right: 5px;
+
+  max-width: 100%;
+  width: 100%;
+}
+
+.apartment-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.apartment-description::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.apartment-description::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 .apartment-card .price {
@@ -43,34 +78,37 @@
 
 .apartment-card .actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 8px;
 }
 
-.apartment-card button {
+button {
+  margin-top: 10px;
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
-.apartment-card button.edit {
+.add-button {
+  max-width: 200px;
+}
+.edit-button {
   background-color: #007bff;
   color: #ffffff;
 }
 
-.apartment-card button.edit:hover {
+.edit-button:hover {
   background-color: #0056b3;
 }
 
-.apartment-card button.delete {
+.delete-button {
   background-color: #dc3545;
-  color: #ffffff;
+  color: #fff;
 }
 
-.apartment-card button.delete:hover {
-  background-color: #a71d2a;
+.delete-button:hover {
+  background-color: #b02a37;
 }
 
 .loading {
