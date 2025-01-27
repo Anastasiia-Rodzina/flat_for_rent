@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/flat_for_rent/static/css/main.29f0f376.css",
+    "main.js": "/flat_for_rent/static/js/main.096fc2a0.js",
+    "static/media/background.jpg": "/flat_for_rent/static/media/background.00269482d7a15ecb5245.jpg",
+    "index.html": "/flat_for_rent/index.html",
+    "main.29f0f376.css.map": "/flat_for_rent/static/css/main.29f0f376.css.map",
+    "main.096fc2a0.js.map": "/flat_for_rent/static/js/main.096fc2a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29f0f376.css",
+    "static/js/main.096fc2a0.js"
+  ]
+}
