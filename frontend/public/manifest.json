@@ -1,7 +1,7 @@
 {
   "name": "Flat forRent",
   "short_name": "FlatRent",
-  "start_url": "/flat_for_rent",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

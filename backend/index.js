@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
@@ -10,6 +11,12 @@ app.use(cors());
 
 // Middleware for parsing JSON requests
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "build")));
+
+// Redirect all other requests to index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.use("/api/apartments", apartmentRoutes);
 
