@@ -17,13 +17,10 @@ npm або yarn для встановлення залежностей
 1. Клонування репозиторію
 
 git clone https://github.com/Anastasiia-Rodzina/flat_for_rent.git
+
 cd flat_for_rent
 
 2. Налаштування бекенду
-
-Бекенд частина вже задеплоєна за адресою:
-
-https://flat-for-rent-back.onrender.com
 
 Якщо ви хочете запустити бекенд локально, перейдіть у папку backend:
 
@@ -36,7 +33,8 @@ npm install
 Створіть файл .env та додайте наступні змінні:
 
 PORT=5000
-MONGO*URI=ваш_URI*до*бази*даних
+
+MONGO*URI=ваш_URI*до*бази*даних (повідомлю в Telegram)
 
 Запустіть сервер:
 
@@ -45,10 +43,6 @@ npm start
 Сервер буде доступний за адресою: http://localhost:5000
 
 3. Налаштування фронтенду
-
-Фронтенд частина вже задеплоєна за адресою:
-
-"https://Anastasiia-Rodzina.github.io/flat_for_rent"
 
 Якщо ви хочете запустити бекенд локально, перейдіть у папку frontend:
 

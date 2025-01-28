@@ -5,17 +5,19 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 const apartmentRoutes = require("./apartmentRoutes");
 
-// Initialize Express app
 const app = express();
 app.use(cors());
 
-// Middleware for parsing JSON requests
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
+// Redirect all other requests to index.html
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+
 app.use("/api/apartments", apartmentRoutes);
 
-// Connect to MongoDB
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL, {
@@ -31,15 +33,12 @@ const connectDB = async () => {
 
 connectDB();
 
-// Define basic routes
 app.get("/", (req, res) => {
   res.send("Welcome to the Apartment Rental Management Platform!");
 });
 
-// Define port
 const PORT = process.env.PORT || 5000;
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

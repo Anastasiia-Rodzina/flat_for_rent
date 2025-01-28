@@ -76,6 +76,8 @@ const apartmentsSlice = createSlice({
 
 export const selectAllApartments = (state) => state.apartments.apartments;
 export const selectApartmentById = (state, id) =>
-  state.apartments.apartments.find((apt) => apt.id === id);
+  Array.isArray(state.apartments.apartments)
+    ? state.apartments.apartments.find((apt) => apt.id === id)
+    : undefined;
 
 export default apartmentsSlice.reducer;

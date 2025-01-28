@@ -3,7 +3,6 @@ const Apartment = require("./ApartmentModel");
 
 const router = express.Router();
 
-// Get all apartments
 router.get("/", async (req, res) => {
   try {
     const apartments = await Apartment.find();
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get a single apartment by ID
 router.get("/:id", async (req, res) => {
   try {
     const apartment = await Apartment.findById(req.params.id);
@@ -26,7 +24,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Create a new apartment
 router.post("/", async (req, res) => {
   try {
     const newApartment = new Apartment(req.body);
@@ -37,7 +34,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update an existing apartment
 router.put("/:id", async (req, res) => {
   try {
     const updatedApartment = await Apartment.findByIdAndUpdate(
@@ -54,7 +50,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete an apartment
 router.delete("/:id", async (req, res) => {
   try {
     const deletedApartment = await Apartment.findByIdAndDelete(req.params.id);

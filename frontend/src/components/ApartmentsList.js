@@ -7,7 +7,7 @@ import {
   deleteApartment,
   fetchApartments,
 } from "../redux/apartmentOperations.js";
-import Filter from "./Filter"; // Імпортуємо компонент Filters
+import Filter from "./Filter";
 
 const ApartmentsList = () => {
   const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const ApartmentsList = () => {
   const status = useSelector((state) => state.apartments.status);
   const error = useSelector((state) => state.apartments.error);
 
-  const [priceRange, setPriceRange] = useState([0, 10000]); // Діапазон цін
-  const [roomsFilter, setRoomsFilter] = useState(0); // Кількість кімнат (0 = всі)
+  const [priceRange, setPriceRange] = useState([0, 10000]);
+  const [roomsFilter, setRoomsFilter] = useState(0);
 
   useEffect(() => {
     dispatch(fetchApartments());
@@ -42,13 +42,15 @@ const ApartmentsList = () => {
     }
   };
 
-  // Фільтрація квартир за ціною та кількістю кімнат
-  const filteredApartments = apartments.filter((apartment) => {
-    const isPriceInRange =
-      apartment.price >= priceRange[0] && apartment.price <= priceRange[1];
-    const isRoomMatch = roomsFilter === 0 || apartment.rooms === roomsFilter;
-    return isPriceInRange && isRoomMatch;
-  });
+  const filteredApartments = Array.isArray(apartments)
+    ? apartments.filter((apartment) => {
+        const isPriceInRange =
+          apartment.price >= priceRange[0] && apartment.price <= priceRange[1];
+        const isRoomMatch =
+          roomsFilter === 0 || apartment.rooms === roomsFilter;
+        return isPriceInRange && isRoomMatch;
+      })
+    : [];
 
   let content;
 

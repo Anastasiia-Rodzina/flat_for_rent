@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// Define Apartment schema and model
 const apartmentSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
