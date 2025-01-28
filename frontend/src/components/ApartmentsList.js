@@ -93,7 +93,6 @@ const ApartmentsList = () => {
 
   return (
     <div className="apartments-container">
-      <h2>Available Apartments</h2>
       <button onClick={() => navigate("/add")} className="add-button">
         Add New Apartment
       </button>

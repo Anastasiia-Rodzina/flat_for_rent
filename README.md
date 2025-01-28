@@ -22,6 +22,10 @@ cd flat_for_rent
 
 2. Налаштування бекенду
 
+Бекенд частина вже задеплоєна за адресою:
+
+https://flat-for-rent-back.onrender.com
+
 Якщо ви хочете запустити бекенд локально, перейдіть у папку backend:
 
 cd backend
